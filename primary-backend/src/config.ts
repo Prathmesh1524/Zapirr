@@ -1,0 +1,1 @@
+export const JWT_PASSWORD = process.env.JET_SECRET || "random123"

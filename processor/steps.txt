@@ -1,0 +1,15 @@
+    Create a KAFKA container 
+            - docker run -p 9092:9092 apache/kafka:3.7.1
+    go to the kafka bash
+            - docker exec -it cd2a76771b1a /bin/bash
+    then go to 
+    cd /opt/kfaka/bin
+    run this to create a topic/image topic_name
+     ./kafka-topics.sh --create --topic topic_name --bootstrap-server localhost:9092
+            - 
+
+        MAKE SURE YOU HAVE A RIGHT DATBASE URL
+        then read from database and get the id's in tha kafka queue
+                - ./kafka-console-consumer.sh --topic topic_name --from-beginning --bootstrap-server localhost:9092
+
+                make sure the broker url is correct
