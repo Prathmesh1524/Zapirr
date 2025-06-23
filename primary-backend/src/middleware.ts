@@ -20,15 +20,3 @@ export const AuthMiddleware = (req: Request, res: Response, next: NextFunction) 
 }
 
 
-// //{
-//     "AvaliableTriggerID": "webhook",
-//     "triggerMetadata": {},
-//     "actions":[{
-//         "AvaliableActionId": "email",
-//         "actionMetadata": {}
-//     },{
-
-//         "AvaliableActionId": "sol",
-//         "actionMetadata": {}
-//     }]
-//         }

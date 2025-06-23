@@ -20,10 +20,12 @@ const db_1 = require("../db");
 const jsonwebtoken_1 = __importDefault(require("jsonwebtoken"));
 const config_1 = require("../config");
 const router = (0, express_1.Router)();
+// User cna signup via this route
 router.post("/signup", (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     const body = req.body;
     const parsedData = types_1.SignUpSchema.safeParse(body);
     console.log(parsedData);
+    //input validation
     if (!parsedData.success) {
         res.status(411).json({
             msg: "invalid Inputs"
@@ -41,6 +43,7 @@ router.post("/signup", (req, res) => __awaiter(void 0, void 0, void 0, function*
         });
         return;
     }
+    // creating a new user in the database
     yield db_1.prismaclient.user.create({
         data: {
             email: parsedData.data.username,
@@ -54,6 +57,8 @@ router.post("/signup", (req, res) => __awaiter(void 0, void 0, void 0, function*
     });
     // AWAIT SENDEMAIL
 }));
+//
+// signin route 
 router.post("/signin", (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     const body = req.body;
     const signIndata = types_1.SigninSchema.safeParse(body);
@@ -75,16 +80,17 @@ router.post("/signin", (req, res) => __awaiter(void 0, void 0, void 0, function*
         });
         return;
     }
-    // set the JWT
+    // set the JWT/ cookies on the browser
     const token = jsonwebtoken_1.default.sign({
         id: user.id
     }, config_1.JWT_PASSWORD);
     res.json({
-        token: token
+        token
     });
 }));
 //USER DEATILS
-router.get("/user", middleware_1.AuthMiddleware, (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+// to get who is looged in 
+router.get("/", middleware_1.AuthMiddleware, (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     //@ts-ignore
     const id = req.id;
     const userDetails = yield db_1.prismaclient.user.findFirst({

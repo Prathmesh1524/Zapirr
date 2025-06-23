@@ -22,14 +22,3 @@ const AuthMiddleware = (req, res, next) => {
     }
 };
 exports.AuthMiddleware = AuthMiddleware;
-// //{
-//     "AvaliableTriggerID": "webhook",
-//     "triggerMetadata": {},
-//     "actions":[{
-//         "AvaliableActionId": "email",
-//         "actionMetadata": {}
-//     },{
-//         "AvaliableActionId": "sol",
-//         "actionMetadata": {}
-//     }]
-//         }

@@ -55,12 +55,14 @@ model Actions {
 model AvalibleActions {
   id     String    @id @default(uuid())
   name   String
+  image String
   action Actions[] //because of one to many relationship
 }
 
 model TriggerType {
   id     String    @id @default(uuid())
   name   String
+  image String
   triggr Trigger[]
 }
  

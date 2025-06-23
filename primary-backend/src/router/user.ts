@@ -34,7 +34,7 @@ router.post("/signup", async (req, res) => {
         return;
     }
 
-//creating a new user in the database
+// creating a new user in the database
     await prismaclient.user.create({
         data: {
             email: parsedData.data.username,
@@ -79,13 +79,13 @@ router.post("/signin", async (req, res) => {
         id: user.id
     }, JWT_PASSWORD)
     res.json({
-        token: token
+         token
     })
 })
 //USER DEATILS
 
 // to get who is looged in 
-router.get("/user", AuthMiddleware, async (req, res) => {
+router.get("/", AuthMiddleware, async (req, res) => {
     
     
     //@ts-ignore
